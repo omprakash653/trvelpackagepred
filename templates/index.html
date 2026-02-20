@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Taken Prediction</title>
+    <style>
+        body { font-family: Arial; background: #f4f6f8; }
+        .container {
+            width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        h2 { text-align: center; }
+        label { font-weight: bold; }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .prob { background: #e9ecef; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h2>🧳 Product Taken Prediction</h2>
+
+    <form method="post">
+
+        <label>Age</label>
+        <input type="number" name="Age" required>
+
+        <label>Type of Contact</label>
+        <select name="TypeofContact">
+            <option>Self Enquiry</option>
+            <option>Company Invited</option>
+        </select>
+
+        <label>City Tier</label>
+        <select name="CityTier">
+            <option>1</option><option>2</option><option>3</option>
+        </select>
+
+        <label>Duration Of Pitch</label>
+        <input type="number" name="DurationOfPitch">
+
+        <label>Occupation</label>
+        <select name="Occupation">
+            <option>Salaried</option>
+            <option>Small Business</option>
+            <option>Large Business</option>
+            <option>Free Lancer</option>
+        </select>
+
+        <label>Gender</label>
+        <select name="Gender">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <label>Number Of Followups</label>
+        <input type="number" name="NumberOfFollowups">
+
+        <label>Product Pitched</label>
+        <select name="ProductPitched">
+            <option>Basic</option>
+            <option>Standard</option>
+            <option>Deluxe</option>
+            <option>Super Deluxe</option>
+            <option>King</option>
+        </select>
+
+        <label>Preferred Property Star</label>
+        <select name="PreferredPropertyStar">
+            <option>3</option><option>4</option><option>5</option>
+        </select>
+
+        <label>Marital Status</label>
+        <select name="MaritalStatus">
+            <option>Unmarried</option>
+            <option>Married</option>
+            <option>Divorced</option>
+        </select>
+
+        <label>Number Of Trips</label>
+        <input type="number" name="NumberOfTrips">
+
+        <label>Passport</label>
+        <select name="Passport">
+            <option>0</option>
+            <option>1</option>
+        </select>
+
+        <label>Pitch Satisfaction Score</label>
+        <input type="number" name="PitchSatisfactionScore" min="1" max="5">
+
+        <label>Own Car</label>
+        <select name="OwnCar">
+            <option>0</option>
+            <option>1</option>
+        </select>
+
+        <label>Designation</label>
+        <select name="Designation">
+            <option>Executive</option>
+            <option>Manager</option>
+            <option>Senior Manager</option>
+            <option>AVP</option>
+            <option>VP</option>
+        </select>
+
+        <label>Monthly Income</label>
+        <input type="number" name="MonthlyIncome">
+
+        <label>Total Visiting</label>
+        <input type="number" name="TotalVisiting">
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is not none %}
+        <hr>
+        {% if prediction == 1 %}
+            <p class="success">✅ Product WILL BE TAKEN</p>
+        {% else %}
+            <p class="error">❌ Product WILL NOT BE TAKEN</p>
+        {% endif %}
+
+        {% if probability %}
+            <div class="prob">
+                Probability of Product Taken: <b>{{ probability }}</b>
+            </div>
+        {% endif %}
+    {% endif %}
+
+</div>
+</body>
+</html>
