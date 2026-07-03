@@ -51,7 +51,7 @@ def save_to_db(data, prediction, probability):
     cursor.execute(query, values)
     conn.commit()
     conn.close()
-
+print("connected")
 ############################################################
 
 # Load model and preprocessor
@@ -188,3 +188,9 @@ if st.button("📊 View Saved Data"):
 
 st.markdown("---")
 st.caption("ML Model Prediction using Streamlit")
+
+
+
+
+
+
